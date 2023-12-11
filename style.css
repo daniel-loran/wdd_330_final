@@ -27,6 +27,11 @@ body {
   margin: .5rem;
   padding: .5rem;
   border-right: 2px solid rgb(0,0,139);
+  transition: width 1s;
+}
+
+.header-left:hover {
+  width: 150%;
 }
 
 .weather-icon {
@@ -52,6 +57,11 @@ body {
   gap: .5rem; 
   grid-template-columns: repeat(3, auto);
   grid-template-rows: repeat(2, auto);
+  transition: width 1s;
+}
+
+.header-right:hover {
+  width: 150%;
 }
 
 .info-group {
@@ -87,6 +97,7 @@ body {
   border-radius: .25rem;
   padding: .25rem;
 }
+
 
 .day-card-day {
   font-size: .75rem;

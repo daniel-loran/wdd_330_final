@@ -1,5 +1,6 @@
 export const ICON_MAP = new Map()
 
+//assign an iconCode to an icon that will show the icon that describes the weather
 addMapping([0,1], "sun")
 addMapping([2], "cloud-sun")
 addMapping([3], "cloud")

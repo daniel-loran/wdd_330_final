@@ -2,6 +2,7 @@ import "./style.css"
 import { getWeather } from "./weather"
 import { ICON_MAP } from "./iconMap"
 
+//get the user's current location based on their coordinates, user must allow the app to use their location
 navigator.geolocation.getCurrentPosition(positionSuccess, positionError)
 
 function positionSuccess({ coords }) {
@@ -17,7 +18,7 @@ function positionError() {
     )
 }
 
-
+//render weather and unblurr the body
 function renderWeather({ current, daily, hourly }) {
     renderCurrentWeather(current)
     renderDailyWeather(daily)
@@ -25,14 +26,17 @@ function renderWeather({ current, daily, hourly }) {
     document.body.classList.remove("blurred")
 }
 
+//function to set value to an element in the HTML
 function setValue(selector, value, { parent = document } = {}) {
     parent.querySelector(`[data-${selector}]`).textContent = value
 }
 
+//gt the Icon's URL based on iconCode 
 function getIconUrl(iconCode) {
     return `icons/${ICON_MAP.get(iconCode) }.svg`
 }
 
+//render the Current Weather and assign the values to the HTML to be displayed
 const currentIcon = document.querySelector("[data-current-icon]")
 function renderCurrentWeather(current) {
     currentIcon.src = getIconUrl(current.iconCode)
@@ -45,6 +49,7 @@ function renderCurrentWeather(current) {
     setValue("current-precip", current.precip)
 }
 
+//render the Daily Weather and assigns the values to the HTML to be displayed
 const DAY_FORMATTER = new Intl.DateTimeFormat(undefined, { weekday: "long" })
 const dailySection = document.querySelector("[data-day-section]")
 const dayCardTemplate = document.getElementById("day-card-template")
@@ -60,11 +65,7 @@ function renderDailyWeather(daily) {
  }
 
 
- 
-//  function renderHourlyWeather(hourly){
-
-//  }
-
+//renders the Hourly weather and assigns the values to the HTML to be displayed
 const HOUR_FORMATTER = new Intl.DateTimeFormat(undefined, { hour: "numeric" })
 const hourlySection = document.querySelector("[data-hour-section]")
 const hourRowTemplate = document.getElementById("hour-row-template")
